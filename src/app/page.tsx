@@ -2,6 +2,7 @@ import { Hero } from "@/components/Hero";
 import { TrustSignals } from "@/components/TrustSignals";
 import { FeaturedProjects } from "@/components/FeaturedProjects";
 import { Skills } from "@/components/Skills";
+import { ExperienceTimeline } from "@/components/ExperienceTimeline";
 import { AboutPreview } from "@/components/AboutPreview";
 import { CallToAction } from "@/components/CallToAction";
 import { Navbar } from "@/components/Navbar";
@@ -14,6 +15,7 @@ export default function Home() {
       <TrustSignals />
       <FeaturedProjects />
       <Skills />
+      <ExperienceTimeline />
       <AboutPreview />
       <CallToAction />
     </main>

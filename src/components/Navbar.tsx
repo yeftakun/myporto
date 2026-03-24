@@ -8,10 +8,11 @@ export function Navbar() {
         <span className="text-indigo-500">Dev</span>Portfolio
       </Link>
       <div className="flex gap-6 items-center">
-        <Link href="#projects" className="text-sm font-medium hover:text-indigo-400 transition-colors">Projects</Link>
-        <Link href="#about" className="text-sm font-medium hover:text-indigo-400 transition-colors">About</Link>
-        <Link href="#contact" className="px-4 py-2 text-sm font-medium bg-indigo-600 hover:bg-indigo-500 rounded-md transition-colors text-white">
-          Contact Me
+        <Link href="/#projects" className="text-sm font-medium hover:text-indigo-400 transition-colors hidden sm:block">Projects</Link>
+        <Link href="/#about" className="text-sm font-medium hover:text-indigo-400 transition-colors hidden sm:block">About</Link>
+        <a href="/resume.pdf" target="_blank" className="text-sm font-medium hover:text-indigo-400 transition-colors">Resume</a>
+        <Link href="/#contact" className="px-4 py-2 text-sm font-medium bg-indigo-600 hover:bg-indigo-500 rounded-md transition-colors text-white">
+          Contact
         </Link>
       </div>
     </nav>

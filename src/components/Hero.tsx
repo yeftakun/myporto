@@ -21,14 +21,13 @@ export function Hero() {
         </p>
         
         <div className="flex flex-wrap gap-4">
-          <Link href="#projects" className="inline-flex items-center gap-2 bg-indigo-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-indigo-500 transition-colors group">
+          <Link href="/#projects" className="inline-flex items-center gap-2 bg-indigo-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-indigo-500 transition-colors group">
             View Projects
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
-          <Link href="#contact" className="inline-flex items-center gap-2 bg-slate-800 text-white px-6 py-3 rounded-lg font-medium hover:bg-slate-700 border border-slate-700 transition-colors">
-            <Mail className="w-4 h-4" />
-            Contact Me
-          </Link>
+          <a href="/resume.pdf" target="_blank" className="inline-flex items-center gap-2 bg-transparent text-slate-300 px-6 py-3 rounded-lg font-medium hover:bg-slate-800 border border-slate-700 transition-colors">
+            Download CV
+          </a>
         </div>
       </motion.div>
     </section>
