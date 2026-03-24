@@ -5,38 +5,44 @@ import { experience } from '@/lib/data';
 export function ExperienceTimeline() {
   return (
     <section className="w-full bg-slate-950 border-t border-slate-800 py-24">
-      <div className="max-w-3xl mx-auto px-6">
+      <div className="max-w-2xl mx-auto px-6">
         <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-12 text-center">Experience & Education</h2>
-        
-        <div className="relative border-l border-slate-800 ml-4 md:ml-0 md:pl-0">
-          {experience.map((item, index) => (
-            <motion.div 
-              key={item.id}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.15 }}
-              className="mb-10 pl-8 relative md:flex md:gap-8 md:pl-0 items-start group"
-            >
-              {/* Timeline marker */}
-              <div className="absolute left-[-5px] top-1.5 md:left-1/2 md:-translate-x-[5px] w-2.5 h-2.5 rounded-full bg-indigo-500 ring-4 ring-slate-950 group-hover:ring-indigo-500/30 transition-all z-10" />
-              
-              {/* Left side (Date for desktop) */}
-              <div className="hidden md:block w-1/2 text-right pr-12 pt-1">
-                <span className="text-sm font-semibold text-indigo-400 tracking-wider uppercase">{item.period}</span>
-              </div>
-
-              {/* Right side (Content) */}
-              <div className="md:w-1/2 md:pl-12 md:border-l md:border-slate-800 md:relative md:left-1/2 md:-ml-[1px]">
-                <div className="md:hidden mb-2">
-                  <span className="text-xs font-semibold text-indigo-400 tracking-wider uppercase">{item.period}</span>
-                </div>
-                <h3 className="text-xl font-bold text-white mb-1">{item.role}</h3>
-                <p className="text-slate-300 font-medium mb-3">{item.company}</p>
-                <p className="text-slate-400 text-sm leading-relaxed">{item.description}</p>
-              </div>
-            </motion.div>
-          ))}
+        <div className="relative">
+          {/* Vertical line */}
+          <div className="absolute left-5 top-0 w-1 h-full bg-slate-800 rounded" aria-hidden="true" />
+          <ul className="space-y-12 relative z-10">
+            {experience.map((item, idx) => {
+              const isIntern = item.role.toLowerCase().includes('intern');
+              const markerColor = isIntern ? 'bg-cyan-400' : 'bg-indigo-500';
+              const ringColor = isIntern ? 'ring-cyan-400/30' : 'ring-indigo-500/30';
+              return (
+                <motion.li
+                  key={item.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.12 }}
+                  className="flex items-start gap-6 relative"
+                >
+                  {/* Timeline marker */}
+                  <div className={`mt-2 flex-shrink-0 w-4 h-4 rounded-full border-4 border-slate-950 ${markerColor} ${ringColor} shadow-lg`} />
+                  <div className="flex-1">
+                    <h3 className="text-lg md:text-xl font-bold text-white mb-1 flex items-center gap-2">
+                      {item.role}
+                      {isIntern && (
+                        <span className="text-xs px-2 py-0.5 rounded bg-cyan-900 text-cyan-300 font-semibold ml-2">Internship</span>
+                      )}
+                    </h3>
+                    <div className="flex flex-col md:flex-row md:items-center md:gap-3 mb-1">
+                      <span className="text-slate-300 font-medium">{item.company}</span>
+                      <span className="text-xs text-slate-400 mt-1 md:mt-0">{item.period}</span>
+                    </div>
+                    <p className="text-slate-400 text-sm leading-relaxed mt-2">{item.description}</p>
+                  </div>
+                </motion.li>
+              );
+            })}
+          </ul>
         </div>
       </div>
     </section>
